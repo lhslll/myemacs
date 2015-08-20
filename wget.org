@@ -1,0 +1,9 @@
+download:
+
+* download file into current directory
+wget url
+
+* download file into
+wget -o path  url
+
+
