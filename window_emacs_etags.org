@@ -1,0 +1,29 @@
+
+
+window + emacs + etags
+
+* create general tags cmd
+
+find . -name "*.[chCH]" -print | etags -
+
+其中小写ch表示c语言中的ch文件，大写的CH表示c++中的cpp文件的头文件
+
+* general 
+Linux下的etags命令集成在环境变量中，所以不用配置，而Windows下的etags.exe在 ~/bin路径下（与runemacs.exe和emacs.exe）在同一目录下。
+
+所以把该目录加到环境变量中。此时便可在eshell中使用etags命令了。
+
+使用TAG：
+最基本的一个使用叫find-tag，绑定键为M-.
+
+打开一个cpp，M-. 输入要查找的tag，回车，光标即可快速定位。
+tag的理解：我理解tag应该和书签差不多，都是标记，通过标记可以快速定位。
+
+其它使用：
+M-*  刚才使用M-.定位到一个tag后可以用M-*快速返回定位前的位置
+C-u M-. 刚才使用M-.定位到一个tag，若不是自己想要的那个，可以用此键来定位到下一个
+C-u - M-,  （比上面命令中间多一减号）返回上一个tag
+M-x visit-tags-table 指定所需打开TAGS的目录后便可打开TAGS
+C-x 4 .   在另一buffer中定位
+C-x 5.    在另一窗口中定位 应该不会太常用吧。。
+
