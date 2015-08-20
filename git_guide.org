@@ -1,0 +1,36 @@
+
+
+* git first brief guide
+
+1) clone
+   git clone url
+
+2) add
+
+   a. add new brand file
+   b. update exist file
+
+   git add [new file]
+   git add [update file]
+
+3) status to view changes
+
+   git status
+
+4) commit 
+
+   git commit -m "comment for commit"
+
+5) push, after commit, the file still not in git server, need to run below cmd push into server
+
+   git push
+
+6) check log
+
+   git log
+
+7) update local resposity
+
+   git pull
+
+
