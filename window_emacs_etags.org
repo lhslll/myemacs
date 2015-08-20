@@ -2,11 +2,31 @@
 
 window + emacs + etags
 
-* create general tags cmd
+* create general etags database cmd
 
 find . -name "*.[chCH]" -print | etags -
 
 其中小写ch表示c语言中的ch文件，大写的CH表示c++中的cpp文件的头文件
+
+** usage
+   
+    M-. ：跳至相应的函数定义处；
+    M-* ：返回刚才的函数名处；
+    C-u M-. ：如果emacs找错了，找下一个；
+    M-Tab ：自动补齐函数名；
+    1. 在当前目录将.h和.cpp文件提取出来做成tags文件：
+    
+    find . -name "*.[chCH]" -print | etags -
+    或
+    find -name "*.cpp" -exec etags -a {} ;
+    
+    2. 将创建好的tag表通知emacs:
+    M-x visit-tags-table
+    
+    3. 让emacs自动读取tag文件内容:
+    在~/.emacs文件中类似如下内容:
+    (setq tags-file-name "~/project/src/TAGS")
+
 
 * general 
 Linux下的etags命令集成在环境变量中，所以不用配置，而Windows下的etags.exe在 ~/bin路径下（与runemacs.exe和emacs.exe）在同一目录下。
@@ -27,3 +47,41 @@ M-x visit-tags-table 指定所需打开TAGS的目录后便可打开TAGS
 C-x 4 .   在另一buffer中定位
 C-x 5.    在另一窗口中定位 应该不会太常用吧。。
 
+
+
+* ubuntu environment for etags
+ 1. must install global package
+    sudo apt-get install global
+
+* what is gtags for?
+你可能会遇到这样的情况：有一个函数myfunction，在工程的源代码里被调用了十几次，
+你想把 它们都找出来，这时候，etags只能找到它的定义，并不能找到它的调用。而使
+用gtags就能够实现这样的功能（当然，还有很多的办法）。
+要使用gtags，首先要装global包：
+
+apt-get install global
+接着在project是目录下执行：
+gtags
+
+你会发现在当前目录多了几个文件：GPATH、GRTAGS、GSYMS、GTAGS。它们就是用于
+在源文件之间快速跳转。
+在emacs里进入到gtags模式，执行“M-x gtags-mode”。
+这样就可以使用“gtags-find-pattern”和“gtags-find-symbol”来查找函数调用和声
+明以及符号声明。
+
+* cscope 
+cscope只针对C语言。
+sudo apt-get install cscope
+在.emacs里加入这一句：
+(require 'xcscope)
+在工程的目录里设置cscope的工作目录，并在该目录下生成
+cscope.file和scope.out文件：
+
+M-x cscope-set-initial-directory
+M-x cscope-create-list-of-files-to-index
+
+好了，如果要找一个符号的定义，那么就执行：
+M-x cscope-find-global-definition
+找调用某个函数的函数，执行：
+M-x cscope-find-functions-calling-this-function
+C-c s C-h 能找到更多关系cscope的命令。
