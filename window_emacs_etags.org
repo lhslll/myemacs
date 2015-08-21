@@ -53,6 +53,7 @@ C-x 5.    在另一窗口中定位 应该不会太常用吧。。
  1. must install global package
     sudo apt-get install global
 
+
 * what is gtags for?
 你可能会遇到这样的情况：有一个函数myfunction，在工程的源代码里被调用了十几次，
 你想把 它们都找出来，这时候，etags只能找到它的定义，并不能找到它的调用。而使
@@ -68,6 +69,7 @@ gtags
 在emacs里进入到gtags模式，执行“M-x gtags-mode”。
 这样就可以使用“gtags-find-pattern”和“gtags-find-symbol”来查找函数调用和声
 明以及符号声明。
+
 
 * cscope 
 cscope只针对C语言。
