@@ -65,6 +65,23 @@
 	 ;;("prog-ssl" . "/usr/bin/stunnel")
 	 ;;("proto" . "%")
 	 )
+       ("ms"
+	 ("mailbox-type" . pop)
+	 ("name" . "LI/HUSHENG")
+	 ("user" . "lihusheng0623")
+	 ("mail-domain" . "outlook.com")
+	 ("smtp-ssl" . t)
+	 ("smtp-ssl-port" . "465")
+	 ("smtp-server" . "smtp-mail.outlook.com")
+	 ("pop-ssl" . t)
+	 ("pop-ssl-port" . "995")
+	 ("pop-server" . "pop-mail.outlook.com")
+	 ("pop-user" . "lihusheng0623@hotmail.com")
+	 ("pop-auth" . pass)
+	 ("pop-delete" . nil)
+	 ;;("prog-ssl" . "/usr/bin/stunnel")
+	 ;;("proto" . "%")
+	 )	
        ("imap"
 	 ("mailbox-type" . pop)
 	 ("name" . "LI/HUSHENG")
@@ -83,3 +100,7 @@
 	 ("proto" . "%")
 	 )
       ))
+
+;; doc-view-mode setting for ghostscript program
+
+(setq doc-view-ghostscript-program "/opt/local/bin/gs")
